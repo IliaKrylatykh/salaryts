@@ -4,7 +4,7 @@ import { IUser } from '../../models/models'
 export const jsonApi = createApi({
 	reducerPath: 'users',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://jsonplaceholder.typicode.com',
+		baseUrl: 'http://localhost:3001',
 	}),
 	endpoints: build => ({
 		getUsers: build.query<IUser[], number>({
@@ -15,7 +15,15 @@ export const jsonApi = createApi({
 				},
 			}),
 		}),
+		searchUsers: build.query<IUser[], string>({
+			query: (search: string) => ({
+				url: `/users`,
+				params: {
+					q: search,
+				},
+			}),
+		}),
 	}),
 })
 
-export const { useGetUsersQuery } = jsonApi
+export const { useGetUsersQuery, useSearchUsersQuery } = jsonApi

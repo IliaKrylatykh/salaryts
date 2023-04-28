@@ -1,11 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
-import { ButtonProps } from './button.types'
 
-const ButtonBlack: FC<PropsWithChildren<ButtonProps>> = ({
-	link,
-	children,
-}) => {
+const ButtonBlack: FC<PropsWithChildren<any>> = ({ link, children }) => {
 	return (
 		<Link
 			to={link}
