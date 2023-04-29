@@ -26,7 +26,6 @@ const Home: FC = () => {
 
 	useEffect(() => {
 		setSearchActive(debounced.length > 3 && searchUsers?.length! > 0)
-		console.log(isSearchActive)
 	}, [debounced])
 
 	return (

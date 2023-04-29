@@ -15,6 +15,9 @@ export const jsonApi = createApi({
 				},
 			}),
 		}),
+		getUserInfo: build.query<IUser, number>({
+			query: id => `/users/${id}`,
+		}),
 		searchUsers: build.query<IUser[], string>({
 			query: (search: string) => ({
 				url: `/users`,
@@ -26,4 +29,5 @@ export const jsonApi = createApi({
 	}),
 })
 
-export const { useGetUsersQuery, useSearchUsersQuery } = jsonApi
+export const { useGetUsersQuery, useSearchUsersQuery, useGetUserInfoQuery } =
+	jsonApi

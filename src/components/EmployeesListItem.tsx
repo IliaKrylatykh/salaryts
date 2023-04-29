@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { IUser } from '../models/models'
+import EmployeeInfo from './EmployeeInfo'
 import SvgPathSelector, { Path } from './UI/SvgPathSelector'
 import ButtonGray from './UI/buttons/ButtonGray'
 
@@ -9,13 +10,29 @@ interface EmployeesListItemProps {
 }
 
 const EmployeesListItem: FC<EmployeesListItemProps> = ({ user }) => {
+	const [open, setOpen] = useState(false)
+	const closeModal = () => setOpen(false)
 	return (
-		<div className='px-4 flex justify-between items-center h-[35px] hover:bg-slate-100'>
+		<div
+			className='px-4 flex justify-between items-center h-[35px] hover:bg-slate-100 cursor-pointer'
+			onClick={() => setOpen(o => !o)}
+		>
 			<input type='checkbox' />
 			<div className='h-5 w-5 bg-blue-500 rounded-full'></div>
-			<div className='w-1/5 flex justify-center tracking-tighter text-sm'>
+			<div className='w-1/5 flex justify-center tracking-tighter text-sm '>
 				{user.name}
 			</div>
+			<Popup open={open} closeOnDocumentClick onClose={closeModal} modal nested>
+				<div className='modal relative'>
+					<a
+						className='close cursor-pointer absolute right-2 text-3xl text-gray-700'
+						onClick={closeModal}
+					>
+						&times;
+					</a>
+					<EmployeeInfo id={user.id} />
+				</div>
+			</Popup>
 			<div className='w-1/6 flex justify-center tracking-tighter text-sm'>
 				{user.website}
 			</div>
