@@ -11,7 +11,7 @@ import {
 } from '../store/jsonplaceholder/json.api'
 
 const Home: FC = () => {
-	const { data: usersTotal } = useGetUsersQuery(10000)
+	// const { data: usersTotal } = useGetUsersQuery(10000)
 
 	const [search, setSearch] = useState('')
 	const [isSearchActive, setSearchActive] = useState(false)
@@ -30,7 +30,7 @@ const Home: FC = () => {
 
 	return (
 		<div className='m-4 w-full'>
-			<div className='w-full font-bold'>{usersTotal?.length} сотрудников</div>
+			{/* <div className='w-full font-bold'>{usersTotal?.length} сотрудников</div> */}
 			<div className='flex justify-between'>
 				<div className='w-2/5 flex'>
 					<button className='h-full w-[40px] bg-white rounded-l flex justify-center items-center'>
@@ -79,7 +79,6 @@ const Home: FC = () => {
 				) : (
 					<EmployeesList />
 				)}
-				<div className='flex h-[45px] justify-between items-center border-gray-200 border-t-2 px-4'></div>
 			</div>
 		</div>
 	)

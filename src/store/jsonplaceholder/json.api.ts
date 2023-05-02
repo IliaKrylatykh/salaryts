@@ -7,10 +7,11 @@ export const jsonApi = createApi({
 		baseUrl: 'http://localhost:3001',
 	}),
 	endpoints: build => ({
-		getUsers: build.query<IUser[], number>({
-			query: (limit: number = 5) => ({
+		getUsers: build.query<IUser[], { page: number; limit: number }>({
+			query: ({ page = 1, limit = 10 }) => ({
 				url: `/users`,
 				params: {
+					_page: page,
 					_limit: limit,
 				},
 			}),
